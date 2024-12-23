@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.demoarchitecture.domain.use_case.DemoUseCase
+import com.example.demoarchitecture.utils.Logger
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,7 +14,7 @@ import javax.inject.Inject
     fun callApi() {
         viewModelScope.launch(Dispatchers.IO) {
             useCase.invoke().collect {
-                Log.e("TAG","Response : $it")
+                Logger.e("TAG","Response : $it")
             }
         }
     }

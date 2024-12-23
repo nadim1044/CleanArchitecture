@@ -23,16 +23,9 @@ class RemoteSource @Inject constructor(private val service: ApiService) {
     suspend fun demoCalling(): Resource<DemoResponse?> {
         return try {
             val response = service.getDemo()
-            if (response.isSuccessful) {
+            if (response.isSuccessful && response.body() != null) {
                 val data = response.body()
-//                if (data?.data. == HttpURLConnection.HTTP_OK) {
                     Resource.Success(data)
-//                } else {
-//                    Resource.Error(
-//                        data?.responseCode ?: ERROR_100,
-//                        data?.message ?: DEFAULT_ERROR_MESSAGE
-//                    )
-//                }
             } else {
                 Resource.Error(response.code(), response.message())
             }
