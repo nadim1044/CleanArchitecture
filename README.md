@@ -26,4 +26,4 @@ This project is a demonstration of building a clean and modern Android applicati
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/<your-github-username>/<your-repo-name>.git
+   git clone https://github.com/nadim1044/CleanArchitecture.git
