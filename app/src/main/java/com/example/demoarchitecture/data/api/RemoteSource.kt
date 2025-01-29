@@ -1,13 +1,11 @@
 package com.example.demoarchitecture.data.api
 
-import com.example.demoarchitecture.data.model.res.DemoResponse
+import com.example.demoarchitecture.data.model.PaginationModel
 import com.example.demoarchitecture.utils.Logger
 import com.example.demoarchitecture.utils.Resource
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import java.net.HttpURLConnection
-
 import javax.inject.Inject
 
 @Module
@@ -20,12 +18,12 @@ class RemoteSource @Inject constructor(private val service: ApiService) {
         private const val DEFAULT_ERROR_MESSAGE = "Something went wrong"
     }
 
-    suspend fun demoCalling(): Resource<DemoResponse?> {
+    suspend fun demoCalling(): Resource<PaginationModel?> {
         return try {
             val response = service.getDemo()
             if (response.isSuccessful && response.body() != null) {
                 val data = response.body()
-                    Resource.Success(data)
+                Resource.Success(data)
             } else {
                 Resource.Error(response.code(), response.message())
             }
@@ -62,8 +60,6 @@ class RemoteSource @Inject constructor(private val service: ApiService) {
 //            )
 //        }
 //    }
-
-
 
 
 }

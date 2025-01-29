@@ -35,6 +35,13 @@ android {
     buildFeatures {
         buildConfig = true // Ensure this is set to true (default is true)
     }
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
+
 
 }
 
@@ -67,4 +74,7 @@ dependencies {
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
 
     implementation 'androidx.activity:activity-ktx:1.5.1'
+
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    kapt 'com.github.bumptech.glide:compiler:4.15.1'
 }
